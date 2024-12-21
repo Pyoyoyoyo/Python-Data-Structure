@@ -28,12 +28,23 @@ class Stack:
             return self.stack_list.pop()
 
 
-def sort_stack(stack):
+def sort_stack(input_stack):
+    print(input_stack.stack_list)
     sorted_stack = Stack()
-    while not stack:
-        temp = stack.pop()
-        while not sorted_stack:
-            pass
+    while not input_stack.is_empty():
+        print(input_stack.stack_list)
+
+        temp = input_stack.pop()
+        while not sorted_stack.is_empty() and sorted_stack.peek() > temp:
+            pop = sorted_stack.pop()
+            input_stack.push(pop)
+        sorted_stack.push(temp)
+        print(sorted_stack.stack_list)
+
+    while not sorted_stack.is_empty():
+        pop = sorted_stack.pop()
+        input_stack.push(pop)
+
 
 my_stack = Stack()
 my_stack.push(3)
